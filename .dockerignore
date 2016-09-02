@@ -1,0 +1,13 @@
+*
+!morelia/*
+!tests/*
+!setup.py
+!runtox.py
+!tox.ini
+!.morelia
+*.pyc
+*/*.pyc
+*/*/*.pyc
+*/*/*/*.pyc
+*/*/*/*/*.pyc
+*/*/*/*/*/*.pyc
