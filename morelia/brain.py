@@ -5,6 +5,7 @@ import logging
 import functools
 import os
 import signal
+import importlib
 
 logger = logging.getLogger(__name__)
 
@@ -14,9 +15,9 @@ def ask_exit(sig_name, loop):
     loop.stop()
 
 
-def _populate_dict(d, l):
+def import_components(d, l):
     for i in l:
-        d[i.name] = i
+        d[i.name] = importlib.import_module(i)
 
 
 class Brain(object):
@@ -25,9 +26,9 @@ class Brain(object):
         self._effectors = {}
         self._interpreters = {}
 
-        _populate_dict(self._sensors, sensors)
-        _populate_dict(self._effectors, effectors)
-        _populate_dict(self._interpreters, interpreters)
+        import_components(self._sensors, sensors)
+        import_components(self._effectors, effectors)
+        import_components(self._interpreters, interpreters)
 
     def process(self):
         # read each sensor
@@ -48,11 +49,7 @@ class Brain(object):
         time.sleep(0.1)
         # asyncio.ensure_future(self.process())
 
-    def import_subroutines(self):
-        pass
-
     def start(self):
-        self.import_subroutines()
         while True:
             self.process()
 
