@@ -1,7 +1,7 @@
 import traceback
 import sys
 import logging
-from swarmci import main
+from morelia import main
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +10,7 @@ if __name__ == '__main__':
         logging.basicConfig(
             stream=sys.stdout,
             level=logging.INFO,
-            format="%(asctime)s (%(threadName)-10s) %(message)s")
+            format="%(asctime)s [%(levelname)8s] %(message)s")
         main(sys.argv[1:])
     except Exception as e:
         traceback.print_exc()

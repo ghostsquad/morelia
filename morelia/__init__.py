@@ -4,6 +4,7 @@ import os
 import sys
 import yaml
 from os import path
+import contracts
 
 here = os.path.dirname(os.path.realpath(__file__))
 
@@ -18,7 +19,7 @@ def parse_args(args):
         description="Morelia - A Slack AI (Bot)")
 
     parser.add_argument('--version', action='version',
-                        version='%(prog)s {}'.format(script_version))
+                        version='Morelia version {}'.format(script_version))
 
     return parser.parse_args(args)
 
@@ -28,4 +29,7 @@ def main(args):
     logging.basicConfig(
         stream=sys.stdout,
         level=logging.INFO,
-        format="%(asctime)s (%(threadName)-10s) [%(levelname)8s] - %(message)s")
+        format="%(message)s")
+
+    # https://andreacensi.github.io/contracts/overhead.html#overhead
+    contracts.all_disabled()

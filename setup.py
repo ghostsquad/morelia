@@ -15,6 +15,7 @@ import sys
 
 here = path.abspath(path.dirname(__file__))
 
+
 class Tox(TestCommand):
     user_options = [('tox-args=', 'a', "Arguments to pass to tox")]
 
@@ -64,19 +65,10 @@ setup(
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
         'Development Status :: 3 - Alpha',
         'Private :: Do Not Upload',
-
-        # Indicate who your project is intended for
         'Intended Audience :: Developers',
-
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 3.4',
+        'Operating System :: OS Independent',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
@@ -97,7 +89,10 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'PyYAML==3.11'
+        'PyYAML>=3.11',
+        'slacker>=0.9.25',
+        'websocket-client>=0.37.0',
+        'pycontracts'
     ],
 
     # List additional groups of dependencies here (e.g. development
